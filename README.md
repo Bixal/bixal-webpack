@@ -2,26 +2,31 @@
 
 1. Create apps using create-react-app or place in /apps.
 
-2. Merge the package.json files to ./package.json and delete them from the individual apps.
+   _note:_ If you're using `npx create-react-app your-react-app` you'll need to
+   delete the `node_modules` folder to avoid errors on `npm run-script build`.
 
-3. Run: 'npm install'
+2) Merge the package.json files to ./package.json and delete them from the individual apps.
 
-4. Create a block for your app in: web/modules/custom/YOURMODULE/src/Plugin/Block/.
+3) Run: 'npm install'
 
-5. Run: 'npm run build'
+4) Create a block for your app in: web/modules/custom/YOURMODULE/src/Plugin/Block/.
 
-6. Add app to YOURMODULE.libraries.yml.
+5) Run: 'npm run build'
+
+6) Add app to YOURMODULE.libraries.yml.
+
 ```yml
 your-app:
   version: 1.x
   css:
-      theme:
-        tools/build/static/css/your-app.min.css: {}
+    theme:
+      tools/build/static/css/your-app.min.css: {}
   js:
     tools/build/static/js/your-app.min.js: {}
 ```
 
 7. Create a Block for your app.
+
 ```php
 ?php
 
@@ -55,6 +60,7 @@ class YourAppBlock extends BlockBase {
 ```
 
 8. Make sure the div id matches the id defined in your-app/src/index.js
+
 ```javascript
-ReactDOM.render(<App />, document.getElementById('your-app'));
+ReactDOM.render(<App />, document.getElementById("your-app"));
 ```
